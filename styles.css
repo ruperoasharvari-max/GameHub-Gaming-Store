@@ -1,4 +1,4 @@
-/* styles.css - compact GameHub theme */
+/* styles.css - GameHub theme inspired by PetPlayZone */
 :root{
   --accent:#2b6cb0; --accent-2:#2f855a; --muted:#6b7280; --card:#fff; --shadow:0 8px 20px rgba(12,22,31,0.06);
   --radius:12px; --max-w:1080px; --font: Inter,system-ui,Arial;
@@ -26,3 +26,4 @@ input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(12,22
 .btn-small{display:inline-block;padding:8px 10px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none}
 .hidden{display:none}
 @media(min-width:920px){ .hero{grid-template-columns:1fr 320px} }
+.text-muted{color:var(--muted)}
