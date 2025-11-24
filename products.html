@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GameHub • Store</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">GameHub</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">Store</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Store — Games & Accessories</h1>
+    <p class="lead">Click "Add to cart" to try the demo cart (client-side).</p>
+
+    <section class="service-grid" id="product-list">
+      <!-- Product cards are rendered by main.js -->
+      <!-- example product structure (rendered): -->
+      <!--
+      <div class="service-card" id="product-1">
+        <img src="..." class="product-img">
+        <h3>Game Title</h3>
+        <p class="price">₹1999</p>
+        <p>Short description</p>
+        <div class="card-actions">
+          <button class="btn btn-add" data-id="1">Add to cart</button>
+          <a class="btn btn-outline" href="cart.html">Buy Now</a>
+        </div>
+      </div>
+      -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>© GameHub</p></div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // sample product data for this demo
+    const PRODUCTS = [
+      {id:1, title:"CyberStrike: Neon Wars", price:2499, img:"/mnt/data/1da198f7-840d-492a-92a9-ae7dd300ac9d.png", desc:"Action-packed FPS on PC & consoles."},
+      {id:2, title:"Mystic Quest: Origins", price:1999, img:"/mnt/data/1da198f7-840d-492a-92a9-ae7dd300ac9d.png", desc:"Open-world RPG adventure."},
+      {id:3, title:"ProGamers Headset X1", price:1499, img:"/mnt/data/1da198f7-840d-492a-92a9-ae7dd300ac9d.png", desc:"Comfort + crystal clear sound."},
+      {id:4, title:"SpeedPad Controller", price:999, img:"/mnt/data/1da198f7-840d-492a-92a9-ae7dd300ac9d.png", desc:"Ergonomic controller with turbo mode."}
+    ];
+
+    // render products on page
+    (function renderProducts(){
+      const list = document.getElementById('product-list');
+      PRODUCTS.forEach(p=>{
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.id = 'product-' + p.id;
+        card.innerHTML = `
+          <img src="${p.img}" class="product-img" alt="${p.title}" />
+          <h3>${p.title}</h3>
+          <p class="price">₹${p.price}</p>
+          <p>${p.desc}</p>
+          <div class="card-actions">
+            <button class="btn btn-add" data-id="${p.id}">Add to cart</button>
+            <a class="btn btn-outline" href="cart.html">View Cart</a>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+      // wire add buttons (main.js also watches but add here too)
+      list.querySelectorAll('.btn-add').forEach(b=>{
+        b.addEventListener('click', function(){
+          const id = Number(this.dataset.id);
+          window.gamehubAddToCart(id,1);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
