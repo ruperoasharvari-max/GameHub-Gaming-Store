@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GameHub • Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">GameHub</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Store</a>
+        <a href="cart.html" class="active">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Your Cart</h1>
+    <div id="cart-area" class="summary-box">
+      <!-- Cart contents will be rendered by main.js -->
+      <p class="text-muted">Loading cart...</p>
+    </div>
+
+    <div style="margin-top:16px">
+      <a class="btn" id="checkout-btn" href="checkout.html">Proceed to Checkout</a>
+      <a class="btn btn-outline" href="products.html">Continue Shopping</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>© GameHub</p></div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
