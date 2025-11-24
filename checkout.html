@@ -52,9 +52,9 @@
       e.preventDefault();
       const name = document.getElementById('name').value;
       const address = document.getElementById('address').value;
-      // perform fake order and clear cart
       const orderId = 'GH' + Math.floor(Math.random()*900000 + 100000);
-      window.gamehubClearCart();
+      // clear cart via exposed function
+      if(window.gamehubClearCart) window.gamehubClearCart();
       const result = document.getElementById('order-result');
       result.classList.remove('hidden');
       result.innerHTML = '<h3>Order Confirmed</h3><p>Thanks, '+name+'. Your order ID is <strong>'+orderId+'</strong>.</p><p>Delivery to: '+(address.replace(/\n/g,'<br>'))+'</p>';
