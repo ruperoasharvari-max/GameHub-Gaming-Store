@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GameHub • Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">GameHub</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Store</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Checkout</h1>
+    <p class="lead">This demo performs a client-side checkout and then shows a confirmation.</p>
+
+    <form id="checkoutForm" class="form">
+      <label for="name">Full name</label>
+      <input id="name" name="name" required />
+
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" pattern="[0-9]{10}" required />
+
+      <label for="address">Delivery address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <div class="form-row">
+        <button class="btn" type="submit">Confirm Order</button>
+        <a class="btn btn-outline" href="cart.html">Back to Cart</a>
+      </div>
+    </form>
+
+    <section id="order-result" class="summary-box hidden" style="margin-top:16px"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>© GameHub</p></div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // checkout handling (client-side demo)
+    document.getElementById('checkoutForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      // perform fake order and clear cart
+      const orderId = 'GH' + Math.floor(Math.random()*900000 + 100000);
+      window.gamehubClearCart();
+      const result = document.getElementById('order-result');
+      result.classList.remove('hidden');
+      result.innerHTML = '<h3>Order Confirmed</h3><p>Thanks, '+name+'. Your order ID is <strong>'+orderId+'</strong>.</p><p>Delivery to: '+(address.replace(/\n/g,'<br>'))+'</p>';
+      window.scrollTo(0,0);
+    });
+  </script>
+</body>
+</html>
